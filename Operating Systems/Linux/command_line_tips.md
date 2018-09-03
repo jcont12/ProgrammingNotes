@@ -53,3 +53,15 @@ use the chmod command (use man chmod for help)
 
 WHERE WAS A DOWNLOADED PACKAGE INSTALLED?
 dpkg -L <package name>
+
+
+HOW TO KILL A PROCESS THAT IS TAKING UP CPU
+you can use the htop command to see the processes that are running.
+The htop interface is self-explanatory... if you press F9 it gives you a list of "kill" signals to run on the process.... HOWEVER it was not working for me... probably because I need sudo access to send a kill signal and htop didn't allow this. 
+So ryan used the ps -ef command followed by a grep with the process name to identify its PID (process id), and then ran a sudo kill -9 <PID> which sends a kill signal to the process directly.
+
+
+HOW TO SEE THE LOGS FOR A UNIT IN PROCESS (PROGRAM)
+
+Try using journalctl -u <program> -f, (-u for unit, -f for tail or follow...).  
+	Like systemctl, journalctl is also a systemd utility. It’s used for querying and displaying messages from the journal.
