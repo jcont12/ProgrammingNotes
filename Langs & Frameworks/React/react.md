@@ -1,3 +1,40 @@
+#REACT
+
+Javascript **library** for building user interfaces. 
+
+*React apps run in the browser!!!* - Things happen instantly since they run in the browser and do not need to wait for a server response.
+
+User interface creation becomes practical since React works in components. Every website can be separated into components (header, title, article, images, etc), and react allows us to think of components as contained pieces of code. This keeps things manageable, reusable, flexible.
+
+A benefit of creating a single web application (manageable with react and other libraries such as angular or vue) is that only a single call to a server for a page is done, and everything else you see in the browser are components changing, and even if its taking a while to change we can add a customized spinner or something to improve the UX. Otherwise, every time you go to a subpage or click something a call to the server would be made and we would have to wait for it to  with a new page and wait for it to render. (single page app - you manage everything with javascript with no need to reload pages)
+
+###REACT DOM
+React package that helps us render our components to the DOM.
+
+###BABEL
+React tool that compiles react code in order for it to work correctly in the browser. (jsx)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#NOTES
+
 DEBUGGING A JSX FILE
 There are two optios for debugging a jsx file. The first is to add console.logs to the code, which will print output to the chrome dev tools console to see what you are trying to console.log.
 The second is to actually find the file which won't be as straightforward as it is on your code. You can ususally find the JSX files under the Sources tab on chrome dev tools. under the javascript folder, one of the OC files. Select any of those files and click on the pretty print option (braces at the bottom of the shown file), and use Ctrl+F to find your way through that code to a specific method.

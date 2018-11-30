@@ -1,17 +1,3 @@
-JAR AND IMPORTED LIBRARY/LIBRARIES IN JAVA
-M2 FOLDER
-the maven local repositoryr can be found in ~/.m2  this repository is a local folder that is used to store all your project's dependencies (plugin jars and other files which are downloaded by Maven). In simple, when you build a Maven project, all dependency files will be stored in your Maven local repository.
-
-CONFIRMING WETHER A CLASS WAS SUCCESFULLY IMPORTED THROUGH A LIBRARY IN THE JAR FILE
-in this case, I had imported a class created on connectors code into core, and everything looked fine until I did a full build and suddenly the class wasnt found anymore. We went into the m2 file and followed the package path (in this case ~/.m2/repository/com/smartsheet/service/smartsheet-service-connectors-lib/1.48.0-SNAPSHOT) only to find that for some weird reason there were many jar files and lots of other file noise. So we rm -rf the 1.48 snapshot directory, ran (mvn install -f pomlib.xml) again and came back to ensure the right files were in the folder. We then accesed the jar's packages with the command (jar tf <jar file>) to search for the specific class.
-
-
-MASKEDID ERROR AND CLASS BLOWING UP
-Have you rebuilt the library yet?? run mvn install -f pomlib.xml
-
-Java is packaged on jar or war files.... jar tf searches for the lists in the packages.
-
-
 #MAVEN
 
 Maven is a Build tool to build source code and produce *one* artifact (a component: war, jar, zip file).
@@ -22,7 +8,8 @@ Maven also manages the versioning and releases of our application, since we only
 
 > Extra note: Maven can help you easily produce javadocs and extra information for your application. As proof of this, you can access the Maven sites for the Apache Software foundation and all these sites are actually built with Maven.
 
-####Why use maven?
+###Why use maven?
+
 * Repeatable builds - devops (source control management)
 ```
 Ability to recreate our build for any environment without having to change our settings for each of them. It allows us to externalize a lot of our settings so that our code is not dependent of environment it is being built in.
@@ -41,7 +28,7 @@ Historically you would download all of your jars and keep them with your project
 
 ----------------------------
 
-#####HelloWorld Example lessons
+###HelloWorld Example lessons
 
 
 1.- Create your application. Because of convention over configuration, your folder structure MUST be common java folder structure: 
@@ -73,6 +60,7 @@ appName(r) -> src(r) -> main(r) -> java (r) -> appName.java*
 ```
 
 3.- Run a mvn clean (must run maven on folder where pom is located). Clean deletes and cleans up to set up a structure it needs to set up our application
+
 4.- Run mvn compile
 
 After running mvn compile, you will realize you will have a target directory. In the target directory you will find a classes directory with your classes. 
@@ -81,7 +69,7 @@ After running mvn compile, you will realize you will have a target directory. In
 
 After running mvn package, it will read what packaging you have in the packaging part of the pom, and it will compile your classes and bundle them in a jar (after running tests we have available if any).
 
-#####The POM file
+###The POM file
 
 Our pom file can be divided into 4 different parts:
 1.- Project information
@@ -93,7 +81,7 @@ Our pom file can be divided into 4 different parts:
 4.- Repositories
 > Where we want to download artifacts from.
 
-#####Dependencies
+###Dependencies
 
 Dependencies are simply other resources we want to use in our application. Maven uses the dependencies we list.
 
@@ -110,8 +98,10 @@ Dependencies are imported by their naming convention (this is a confusing part o
 
 ```
 
+As mentioned earlier, transitive dependencies are the main reason why maven is used. If we add a dependency, maven will pull down the dependency along with all the dependencies that that dependency needs. You might think... but I don't know what is being downloaded into my repo!! Well, whomever wrote the dependency knew better than anyone else what that dependency needs to work.
 
-######Versions
+
+###Versions
 
 One version that is important to understand is a SNAPSHOT. All our internal development should start as a snapshot. Some of the benefits include:
 * Snapshots allow us to push new code into our repository and have our IDE or the command line automatically check for changes every time we compile.
@@ -121,12 +111,12 @@ One version that is important to understand is a SNAPSHOT. All our internal deve
 Never deploy to production with a snapshot because we can't recreate that code.
 
 
-#####Types
+###Types
 
 The default packaging is a jar file, but it could be: pom, jar, maven-plugin, war, ear, rar, par.
 
 
-#####Goals
+###Goals
 
 **Clean**
 > Deletes the target directory and generated resources
@@ -145,18 +135,56 @@ The default packaging is a jar file, but it could be: pom, jar, maven-plugin, wa
 
 Remember you can chain goals: mvn clean package deploy
 
-#####The m2 folder
+###The m2 folder
 
-When running a mvn install, maven will store code in the m2 repository. You can find your artifacts in the repository folder, wether it is a dependency artifact downloaded or one of your classes under your package directory (com/company/service etc etc)
+When running a mvn install, maven will store code in the m2 repository. You can find your artifacts in the repository folder, wether it is a dependency artifact downloaded or one of your classes under your package directory (com/company/service etc etc).
 
-By having these jars in our servers we don't need to duplicate them, we can access all of these jars from a central repository.
+It is important to know that maven first looks in this folder to see if you *already* have the dependency. If not, it goes out and downloads it and stores it here.
 
-#####Target
+By having these jars in our servers we don't need to duplicate them, we can access all of these jars from any app that needs them and only downloads what is not already there.
+
+
+###Creating a dependency Repository
+
+A dependency repository is where we download all our dependencies from. It can contain releases or snapshots or both.
+
+It is easy to define our own dependency repository (where we download our dependencies from) by adding it to our pom file:
+
+```xml
+
+
+```
+
+###Target
 
 The target directory is where everything gets compiled to and where all of our unit tests get run from. It is also where all of our source is bundled up and get packaged into a jar or war file.
 
-#####Testing
+###Testing
 
 In case we need to test before compiling, we must set up a src -> test -> java  for all your unit tests (not integration tests). 
 
+###Scopes
 
+At the end of the dependency added in the pom, you can also add a <scope> tag and choose one of the scopes
+
+There are 6 scopes available for dependencies:
+* Compile - default scope, artifacts are available everywhere
+* Provided - artifact is going to be provided where it is deployed
+* Runtime - not needed for compilation, but needed for execution
+* Test - only available for test compilation and execution phase
+* System - NEVER USE
+* Import - advanced topic (dependency management)
+
+
+JAR AND IMPORTED LIBRARY/LIBRARIES IN JAVA
+M2 FOLDER
+the maven local repositoryr can be found in ~/.m2  this repository is a local folder that is used to store all your project's dependencies (plugin jars and other files which are downloaded by Maven). In simple, when you build a Maven project, all dependency files will be stored in your Maven local repository.
+
+CONFIRMING WETHER A CLASS WAS SUCCESFULLY IMPORTED THROUGH A LIBRARY IN THE JAR FILE
+in this case, I had imported a class created on connectors code into core, and everything looked fine until I did a full build and suddenly the class wasnt found anymore. We went into the m2 file and followed the package path (in this case ~/.m2/repository/com/smartsheet/service/smartsheet-service-connectors-lib/1.48.0-SNAPSHOT) only to find that for some weird reason there were many jar files and lots of other file noise. So we rm -rf the 1.48 snapshot directory, ran (mvn install -f pomlib.xml) again and came back to ensure the right files were in the folder. We then accesed the jar's packages with the command (jar tf <jar file>) to search for the specific class.
+
+
+MASKEDID ERROR AND CLASS BLOWING UP
+Have you rebuilt the library yet?? run mvn install -f pomlib.xml
+
+Java is packaged on jar or war files.... jar tf searches for the lists in the packages.

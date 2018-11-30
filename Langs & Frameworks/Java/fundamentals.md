@@ -1,27 +1,3 @@
-JRE VS JDK
-Java Runtime Environment is what is used to run java, so cellphones, computers, etc etc (end-users) must have JRE installed to run Java programs.
-Java Development Kit is what is used to create Java applications.
-When you install the JDK you usually add JRE on the background in order to run it. If you wanted to you could run it without JRE through texteditor/command line, but its better to have your integrated development environment in one place
-
-MAIN CLASS AND METHOD
-Every Java application has a startup main method that must have the format:
-public static void main(String [] args){}
-
-PACKAGES
-Packages on the top of the classes are defined when you create your new project and define its base package and then most IDEs tie source code file structure to package names. Packages represent the file structure in which the class is at, in order to ensure uniqueness. The package name doesnt necessarily have to be the same folder structure (which might be the reason you cant run a project on the command line using Java classname... you might have to specify java con/packagestructure/classname) 
-** Its important to know clearly in what package your class is!!
-
-
-PRIMITIVE TYPES
-there are 4 categories of primitive types that every other type is made of:
-- Integer {byte(8bits- -128 to 127), short(16bits - 32,768 to 32,767), int(32), long(64)}
-- Floating point (float(32), double(64))
-- Character
-- Boolean
-
-ARITHMETIC OPERATIONS
-follow (PEMDAS) rule
-
 TYPE CONVERSION
 cast will be needed when going from a wider primitive type to a smaller. If you do an arithmetic operation with a wide and a small number the result will be automatically set to the wider type unless otherwise manually stated.
 
