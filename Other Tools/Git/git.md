@@ -125,3 +125,29 @@ https://sethrobertson.github.io/GitFixUm/fixup.html#remove_last
 
 ###HOW TO UNDO YOUR GIT RESET
 https://stackoverflow.com/questions/2510276/how-to-undo-git-reset 
+
+###HOW DO I GET A BRANCH FROM SOMEONE ELSE???
+
+First important question.... is the branch on a person's fork or is it on the same remote as yours (...which would be origin, unless the remote you are in is your branch and he somehow has a branch on your remote...get it?)
+
+#####is on same remote (probably origin)
+
+So if he is not working on his own fork, if you do `git branch -a` you will see all branches, both your local and the remote branches (as well as any branch from a remote you have added... see next point)
+
+if you see the branch in a remote, then run `git fetch <remoteName> <branchname>` from whichever branch you are on and that will pull the person's branch into your local branches and from there you can switch
+
+if you only wanna see code and not make any changes it can be worth doing a `git checkout <branchname>`
+
+#####is on his own fork!!!
+
+then, if you have access to his fork, you should do:
+ ``` git remote add <name> <url of persons fork (usually on the git gui)>
+
+ example:
+git remote add catRyan git@git.lab.smartsheet.com:ryan.robertson/project-Name-X.git`
+```
+
+Once you do that, make sure to run `git fetch <name>` in order for local to actually be able to display all the new remote branches (ex: git fetch catRyan)
+
+that will add the persons remote to your posible remote repos, and therefore checking all branches will show his remote branches, so follow last point.
+
