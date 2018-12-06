@@ -15,13 +15,53 @@ React package that helps us render our components to the DOM.
 React tool that compiles react code in order for it to work correctly in the browser. (jsx)
 
 
+###FOLDER STRUCTURE
+
+**package.json** defines all our dependencies (has our scripts as well)
+**node modules** holds the dependencies and sub-dependencies (generated automatically)
+**public** root folder that gets served by a webserver (like index.html)
+**src** files we will work with!
 
 
+###REACT INTRODUCTION
+
+The main capabilities that react has is being able to create components made out of javascript functions, which contain jsx (html elements). We can name this components however we like, we can add properties to this components (props), and we can render them by anchoring them to specific divs:
+
+```javascript
+<!-- component example -->
+
+function Dog = () => {
+	return(
+		<div class="dog">
+			<h1> {props.name} </h1>
+			<p> {props.breed} </p>
+			<p> "this is a nice dog" </p>
+		</div>
+	)
+}
 
 
+<!-- Render, pass props, and anchor to div with id='dog' -->
 
+ReactDOM.render(<Dog name="fido" breed="corgi" />, document.querySelector('#dog'))
+```
 
+This will allow us to copy paste the render method with different properties and that way we have reusable pieces of html that have flexibility on their props
 
+A common practice is to wrap all the reactDom.render methods in a single variable to then anchor to a single div:
+```javascript
+var app = (
+	<div>
+		<Dog name="fido" breed="corgi" />
+		<Dog name="max" breed="mut" />
+	</div>
+
+<!-- now use a single reactDom.render method anchored to app div -->
+
+ReactDOM.render(app, document.querySelector('#app'))
+	
+
+```
 
 
 
