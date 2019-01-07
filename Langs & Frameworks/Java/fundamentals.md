@@ -46,3 +46,7 @@ An abstract class is a class that contains abstract methods, and an abstract met
 
 TARGET VS SRC/WEBAPP FILES
 In those cases it must be because the app generates more files out of  a single one. In our app, the file in src is the file that has to be changed while the files in target are the ones being generated using the src file as reference
+
+###SOME CONTAINERS DO NOT TAKE LISTS INTO ACCOUNT AT COMPILE TIME
+
+Do some more research on this, but remember the case in which casting a Dog object was fine for an abstract method implementation, but casting a list of dogs (List<Dogs>) was complainning, because on compile time the List type is not taken into account and therefore could cause issues in the code.

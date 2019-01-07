@@ -27,8 +27,9 @@ It is good convetion to create folders in the Src folder for each component src>
 
 ###REACT INTRODUCTION
 
-The main capabilities that react has is being able to create components (which always return js)x made out of javascript functions, which contain jsx (html elements). We can name this components however we like, we can add properties to this components (props), and we can render them by anchoring them to specific divs:
+The main capabilities that react has is being able to create components (which always return js)x made out of javascript functions, which contain jsx (html elements). We can name this components however we like, we can add properties to this components (props) including functions, and we can render them by anchoring them to specific divs:
 
+#####Prop example
 ```javascript
 <!-- component example -->
 
@@ -64,7 +65,7 @@ ReactDOM.render(app, document.querySelector('#app'))
 
 ```
 
-Another common practice to usig react, is to import the component class from react, and substituting the component function using the component class:
+Another common practice to using react, is to import the component class from react, and substituting the component function using the component class:
 
 ```javascript
 
@@ -121,7 +122,11 @@ Children doesn't have to be only text, it could be nested html (unordered list) 
 
 State is a special property that is managed inside a component, and are **only available in classes that are extending components from react**. It is not available in function components.
 
-Use state with care, having to many states in different components makes your app confusing and unpredictable.
+To change state, use the METHOD setState (remember it is a method, so pass in as argument how you want a state object to look like when it changes state. setState merges the new object to the old state, so it only manipulates objects within the stage that match.)
+
+Use state with care, having too many states in different components makes your app confusing and unpredictable.
+
+State can hold 
 
 If we add an eventHandler such as onClick to pass in a method once the button is clicked, make sure you pass this.methodName *without parens* as it is only a method reference. If you pass parens, the method will execute upon rendering.
 
@@ -158,11 +163,139 @@ class App extends Component {
 
 ```
 
+If we want to call the method on an event but also passing arguments, when you add the method you must add .bind to the method with a first argument of this, and whatever you want to pass in later:
+
+```javascript
+
+switchNameHandler = (newName) => {
+    this.setState({
+      persons: [
+        {name: newName, age:"30"},
+        {name:"Fer", age:"26"},
+        {name:"Hope", age:"2"}
+      ]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello World</h1>
+        <button onClick={this.switchNameHandler.bind(this, "Jorge")}> Change Names </button>
+    	<!-- bind's this refers to switchNameHandler's this on setState, and so we pass in the second argument -->
+    }
+}
+
+
+```
 ###BEST PRACTICES
 
 You should try and create components through functions (not extending component) as often as possible, because we can't use state inside of it (or call setState for example), because that allows us to create components where it is very clear what the components do, they only render something to the DOM, they are dynamic through changing props that are passed in, and they DON'T affect your application's state... they should just render something to the DOM. The state should only be handled in a few selected components, also called containers.
 
-sheet summary, baseline, sheet management, core smarthseet scenarios in work management 
+You should try and name any method that *you are calling from an event* with the words HANDLER (switchNameHandler).
+
+Always update state in an inmutable fashion (without mutating original state). Create a copy of the state, modify this copy and then update the state with setState.  
+
+
+###PASS INFO FROM INFO TO COMPONENT
+
+There is an event type called onChange, you can add it to an input element and whatever you pass in will be executed when the values in the input change. You can pass in the event onChange a function 
+
+###STYLING
+
+There are two ways to style... either through normal css files, or by adding a variable that contains an object in the form of a css element (map with keys and values as strings, and passing that variable inline in the element by passing the javascript variable)
+```javascript
+
+  render() {
+
+  // different way to use css:
+    const style = {
+      backgroundColor: 'blue',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
+    return (
+      <div className="App">
+        <h1>Hello World</h1>
+        <button style={style} onClick={this.switchNameHandler.bind(this, "Jorge")}> Change Names </button>
+
+
+```
+###CONDITIONAL LOGIC WHEN RENDERING
+
+There are two main ways. The first is by running ternary operators inside braces **on the jsx**, and depending on some boolean variable that changes outside choose what to render.
+
+The other is through normal if statements **outside** of jsx (before the return command but after the render method), in which we can create variables that contain our different things we want to render and pass them in our jsx as the variable within curly braces, and depending on the if condition it renders what the variable is at that point in time. 
+
+examples:
+```javascript
+  render() {
+<!-- variable method -->
+    let persons;
+
+    if (this.state.showPersons){
+      persons = (
+      <div>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}> I am a dog! (and a react children being passed in)</Person>
+      </div>
+      )
+    }
+
+    return (
+      <div className="App">
+        <h1>Hello World</h1>
+        <!-- Ternary operator method -->
+        { this.state.showPersons ?
+        <button onClick={this.togglePersonsHandler}> Hide Names </button>
+        : <button onClick={this.togglePersonsHandler}> Show Names </button>
+        }
+        <br></br>
+        <br></br>
+        <button style={style} onClick={this.switchNameHandler.bind(this, "Jorge")}> Change Names </button>
+        <Input changedName={this.inputNameHandler} name={this.state.persons[1].name}/>
+        {persons}
+      </div>
+    );
+  }
+
+```
+
+###CREATING A LIST
+
+From the examples throughout (above), the way I was rendering was by creating three or more components by copying pasting on the render method with different props. If we instead decide to render a variable that contains the components, how about instead of copying and pasting components, we create a map function that returns an array only describing what the component is going to look like once and passing the information related to that specific array through its state?
+
+```javascript
+
+  state = {
+    persons: [
+      {name:"georgian", age:"29"},
+      {name:"fersh", age:"25"},
+      {name:"hope", age:"2"}
+    ],
+    showPersons: false
+  }
+
+
+      let persons;
+
+    if (this.state.showPersons){
+      persons = (
+      <div>
+        {this.state.persons.map(person => {
+          return <Person name={person.name} age={person.age} />
+        })}
+      </div>
+      )
+    }
+```
+
+
+
 
 
 
