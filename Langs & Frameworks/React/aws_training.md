@@ -1,11 +1,11 @@
-#AWS TRAINNING
+# AWS TRAINNING
 
-###Instructor:
+### Instructor:
 *Carl Leonard - carlml@amazon.com - www.carlml.net*
 
 
 
-##Module 1 - Intro to cloud computing
+## Module 1 - Intro to cloud computing
 
 *What is cloud computing?*
 cc allows you to stop thinking of infrastucture as hardware, and think of it as software instead.
@@ -22,32 +22,32 @@ AWS is flexible, allowing us to migrate all our application to the cloud, or to 
 *benefits of microservices architecture*
 agility, flexible scaling, easy deployment, technology freedom, reusable code, resilience.
 
-###LAMBDAS
+### LAMBDAS
 scripts that run in the cloud that pass information back and forth in a lightweight manner, responding to events from you aws infrasctructure. Helps connect aws infrastructure components to one another.
 
-###EC2
+### EC2
 **EC2 (think hardware (virutal comp - think ram, memory)) --- ECS (think only OS, containers) --- AWS LAMBDA (Runtime, no comp or OS, only processes - think chain together processes)**
 
 
-###LOAD BALANCER
+### LOAD BALANCER
 Redirects traffic to most optimal instances, running health check on instances
 
 **Sticky Session** - NOOOOOOOOOOOOOOOOOOO instead of sticky session: Cache. Share cache between EC2 instances.
 
-###AUTO SCALING
+### AUTO SCALING
 the availability to scale up or down automatically to get more or less instances of computation depending on our load.
 
 
-###CONNECTING TO A SERVICE
+### CONNECTING TO A SERVICE
 The best way to go is using *Resource API*, it only answers back with a single object in the response for whatever you are requesting. (Very OOP focused).
 
-###EXCEPTION AND ERRORS
+### EXCEPTION AND ERRORS
 AWS service returns error code
 if 400 - handle error in your application (not aws)
 if 500 - retry operation
 
 
-###DEVELOPER TOOLS AWS CLOUD 9 AND X-RAY/ MANAGEMENT TOOLS - AWS cloudWatch and AWS cloudTrail
+### DEVELOPER TOOLS AWS CLOUD 9 AND X-RAY/ MANAGEMENT TOOLS - AWS cloudWatch and AWS cloudTrail
 Cloud9: It is not necessary for download, but obvioulsy there is a lot of support and bells and whistles working with AWS IDE and Infrastructure.
 
 X-ray: Creates a service map, identify errors and bugs, identify performance bottlenecks (traces requests, records traces)
@@ -57,7 +57,7 @@ CloudWatch: low level interaction information (syslogs)
 CloudTrail: high level information (think of json responses: who, what, where)
 
 
-###IAM
+### IAM
 Think of stone profit systems and its user group/roles/permissions.
 
 Permission Types: If you see principal as a key in the JSON response, it is a resource-based policy. Else it is identity-based permissions.
@@ -356,7 +356,7 @@ public class DataTransformer {
 
 ```
 
-###**lab 3 - dynamoDB**
+### **lab 3 - dynamoDB**
 
 
 ```java

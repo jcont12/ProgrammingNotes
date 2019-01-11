@@ -1,4 +1,4 @@
-#PROTOBUFFS
+# PROTOBUFFS
 
 On any project, it is important to consider:
 
@@ -22,7 +22,7 @@ How they work?
 
 So as you can see **protobuffs are more lightweight and hence faster to transmit, using schemas gives us automatic validation of data objects (keep integrity of data models) and flexible (easy to modify the schema)**
 
-###SCHEMA
+### SCHEMA
 Fields are indicated and aliased with a number and a tag (tag examples: required, optional, repeated). Schemas allow messages to be extensible. 
 
 ```java
@@ -37,7 +37,7 @@ message Result {
 }
 ```
 
-#IMPORTANT NOTE:
+# IMPORTANT NOTE:
 If decide to use Protobuffs, it is vulnerable to Man in the middle attacks (MITM). What this does is to trick a client into thinking they are talking to the server, but you are sending it to the attacker, which in turns sends the information to the server, so client and server have no idea that they were attacked. With enough protobuffs, it can be possible to revert-engineer the schema and therefore can see your information. To protect yourself against this, make sure you include certificate pinning (Only trust signature from this company). Other options include:
 * rate limits (limit amount of requests)
 * IP blocking

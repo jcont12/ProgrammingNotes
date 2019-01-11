@@ -1,4 +1,4 @@
-#HASHMAP
+# HASHMAP
 
 A hashmap is one of the high performing data structures in the *java collection framework*. Whatever its data size, hashmap almost gives a constant time performance for most frequent operations: **insertion/retrieval**. For this reason hashmap is commonly first choice for big sized data requireing faster retrieval and insertion operations.
 
@@ -14,13 +14,13 @@ Some of its key points:
 
 Two factors affect its performance, the *load factor* and its *initial capacity*, so these factors should be chosen very carefully.
 
-###initial capacity
+### initial capacity
 The capacity of an HashMap is the number of buckets in the hash table. The initial capacity is the capacity of an HashMap at the time of its creation. The default initial capacity of the HashMap is 24 i.e 16. The capacity of the HashMap is doubled each time it reaches the threshold. i.e the capacity is increased to 25=32, 26=64, 27=128….. when the threshold is reached.
 
-###load factor
+### load factor
 Load factor is the measure which decides when to increase the capacity of the HashMap. The default load factor is 0.75f.
 
-###threshold of an HashMap 
+### threshold of an HashMap 
 
 Threshold = (Current Capacity) * (Load Factor)
 

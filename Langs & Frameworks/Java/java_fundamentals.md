@@ -1,6 +1,6 @@
-#JAVA FUNDAMENTALS
+# JAVA FUNDAMENTALS
 
-##JRE VS JDK
+## JRE VS JDK
 
 **Java Runtime Environment (JRE)** is what is used to run java, so cellphones, computers, etc etc (end-users) must have JRE installed to run Java programs.
 
@@ -8,9 +8,9 @@
 
 When you install the JDK you usually add JRE on the background in order to run it. If you wanted to you could run it without JRE through texteditor/command line, but its better to have your integrated development environment in one place.
 
-##INTRODUCTION: HELLO WORLD
+## INTRODUCTION: HELLO WORLD
 
-###INITIAL FOLDER STRUCTURE AND CLASS NAME
+### INITIAL FOLDER STRUCTURE AND CLASS NAME
 
 The upmost folder is the *project name* of the application, which will contain our application. 
 
@@ -27,7 +27,7 @@ public class HelloWorld { //the main method has to live inside of a class. Make 
 }
 ```
 
-###PACKAGES
+### PACKAGES
 
 On the top of each java file, you will see a package. The package is going to basically be the folder structure you have to follow to reach the particular file (not necessarily from the project name folder, but you will see it is a path from somewhere usually starting with com).
 
@@ -38,7 +38,7 @@ The package name doesnt necessarily have to be the same folder structure (which 
 Its important and helpful to know clearly in what package your class is!!
 
 
-##PRIMITIVE TYPES
+## PRIMITIVE TYPES
 
 there are 4 categories of primitive types that every other type is made of:
 * **integer**(whole number)
@@ -53,7 +53,7 @@ there are 4 categories of primitive types that every other type is made of:
 * **character**
 * **boolean**
 
-###ARITHMETIC OPERATIONS AND TYPE CONVERSION
+### ARITHMETIC OPERATIONS AND TYPE CONVERSION
 
 Important to note that any arithmetic operation is going to follow the PEMDAS rule.
 
@@ -67,7 +67,7 @@ long result = (long) (shortValue + longValue + floatValue + doubleValue)
 //result will be a long
 ```
 
-##VARIABLES
+## VARIABLES
 
 In order to create a variable in Java, you must first specify what data type it will belong to. IDE will identify it data stored in variable does not belong to the data type assigned to variable.
 
@@ -76,7 +76,7 @@ int number = 3;
 float decimalNumber = 2.04; 
 ```
 
-###REFERENCES IN JAVA
+### REFERENCES IN JAVA
 
 Referencing a class vs referencing a variable is an important concept to understand:
 
@@ -96,7 +96,7 @@ carB.color = green (carA.color = green and carB.color = green).
 ```
 
 
-##ARRAYS
+## ARRAYS
 
 ```java
 // method one: 
@@ -106,7 +106,7 @@ array.add(x);
 int[] array = {1,5,3,4,9}
 ```
 
-###FOR EACH ON ARRAYS
+### FOR EACH ON ARRAYS
 
 ```java
 // for(type nameofcurrentvalue : arrayName)
@@ -116,7 +116,7 @@ for(int currentNumber : numbersArray){
 }
 ```
 
-##SWITCH STATEMENTS
+## SWITCH STATEMENTS
 
 ```java
 
@@ -136,7 +136,7 @@ switch(test value) {
 ```
 
 
-##STRINGBUILDER
+## STRINGBUILDER
 
 Stringbuilder is an object that emulates a string, but we use it instead of string because a variable of type string does not work with the same capacity of characters in memory over and over, while stringbuilder does.... So a String variable that you later change keeps the old text in memory, while the stringBuilder object does not: 
 ```java

@@ -1,4 +1,4 @@
-#REST/SPREAD OPERATOR
+# REST/SPREAD OPERATOR
 
 The operator for both spread and rest is the same, three dots `...`. Depends on where it is being used that it is a rest or an spread
 

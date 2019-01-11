@@ -1,12 +1,12 @@
-#FAQ
+# FAQ
 
-###Should I download a .deb file, a tar.gz file, an rpm file for a program???
+### Should I download a .deb file, a tar.gz file, an rpm file for a program???
 
 Answer: a deb file for debian distributions (ubuntu)
 
 Ubuntu 11.10 and other Debian based distributions work best with DEB files. Usually TAR.GZ files contain the source code of the program, so you would have to compile the program yourself. RPM files are mainly used in Fedora/Red Hat based distributions. Though it is possible to convert RPM packages to DEB ones.
 
-###Should I download the 32 or 64 deb package of a program??
+### Should I download the 32 or 64 deb package of a program??
 
 Answer: 64 
 

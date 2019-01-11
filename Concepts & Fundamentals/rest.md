@@ -1,4 +1,4 @@
-#REST
+# REST
 
 Representational State Transfer (REST) is an *architectural principle/style* in which applications communicate with each other.
 

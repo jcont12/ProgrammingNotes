@@ -1,4 +1,4 @@
-#BIND AND THIS
+# BIND AND THIS
 
 Yes, it is scary, and you get impatient... but it is also confusing tbh. Things to remember:
 
@@ -8,7 +8,7 @@ Yes, it is scary, and you get impatient... but it is also confusing tbh. Things 
 
 
 
-###Ryans example:
+### Ryans example:
 
 ```java
 //javascript but syntax highlighting not recognizing js
@@ -45,7 +45,7 @@ boundwitharg();
 
 ```
 
-###My example
+### My example
 ```java
 //javascript but syntax highlighting not recognizing js
 let person = {

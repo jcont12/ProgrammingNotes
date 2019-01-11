@@ -1,14 +1,14 @@
-#OBJECT ORIENTED PROGRAMMING (OOP)
+# OBJECT ORIENTED PROGRAMMING (OOP)
 
 Object oriented programming is (at least for me) the most basic pattern to writting code there is out there. It focuses on creating objects (classes) for anything within the application, that have their own state (fields/attributes) and behaviour (methods/functions).
 
 As it is easy to observe, OOP is based on the real world. There are billions of different objects (humans, cats, tables, planes, trees), each with their own state (tall, big, brown, asleep, alive) and each with their own behaviour (run, grow, fly, born)
 
-##MAIN PRINCIPLES OF OBJECT ORIENTED PROGRAMMING
+## MAIN PRINCIPLES OF OBJECT ORIENTED PROGRAMMING
 
 [Helpful link]("https://medium.freecodecamp.org/object-oriented-programming-concepts-21bb035f7260");
 
-###ENCAPSULATION
+### ENCAPSULATION
 
 Encapsulation is the ability to keep a class' information in a *private* state (inside of the class). 
 
@@ -44,7 +44,7 @@ What they can do is defined in the public methods play() and feed(). Each of the
 This is encapsulation.
 
 
-###ABSTRACTION
+### ABSTRACTION
 
 Abstraction is an **extension** of encapsulation. 
 
@@ -59,7 +59,7 @@ Preferably, this mechanism should be easy to use and should rarely change over t
 Best example to think of is an iphone. You have the home button, the volume button, the charge input. They all have different states, and a lot of logic under the hood when you press on each of them. But the high-level mechanism is very simple to use and access. Even with new updates constantly tweaking how each one operates under the hood, their high-level mechanism remains simple and accessible so they can keep communicating efficiently.
 
 
-###INHERITANCE
+### INHERITANCE
 
 Inheritance might be the most simple for you to conceptualize.
 
@@ -72,7 +72,7 @@ The child class reuses all fields and methods of the parent class (common part) 
 This way we avoid repetition while adding flexibility to our classes.
 
 
-###POLYMORPHISM
+### POLYMORPHISM
 
 Polymorphism is the ability for objects that belong to the same hierarchichal tree (inheriting from a common base class) to possess functions that have the same name but each have different behaviours.
 

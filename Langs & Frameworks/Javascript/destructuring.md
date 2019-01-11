@@ -1,4 +1,4 @@
-#DESTRUCTURING
+# DESTRUCTURING
 
 Destructuring is a neat trick which you can use to store individual array elements or object properties into variables:
 

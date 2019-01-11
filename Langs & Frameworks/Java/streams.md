@@ -1,4 +1,4 @@
-#STREAMS
+# STREAMS
 
 Streams bring functional programming to JAVA (supported after Java) and have several advantages, including:
 
@@ -6,15 +6,15 @@ Streams bring functional programming to JAVA (supported after Java) and have sev
 * Make heavy use of Lamda expressions (disposable functions)
 * ParallelStreams make it very easy to multi-thread operations on large data sets
 
-##STREAM PARTS
+## STREAM PARTS
 
-###STREAM SOURCE
+### STREAM SOURCE
 
 Stream of elements. Streams can be created from from collections, lists, sets, longs, doubles, arrays, even lines of a file.
 
-###STREAM OPERATIONS
+### STREAM OPERATIONS
 
-####Intermediate operations
+#### Intermediate operations
 
 These operations act on the current stream, modifying or arranging its content, and ultimately return a stream. This allows us to chain multiple intermediate operations. 
 
@@ -22,7 +22,7 @@ When chaining intermediate operations remember: *order matters*. So filter first
 
 Intermediate operations include: filter, map, flatmap, anyMatch, distinct, findFirst, sorted, skip
 
-####Terminal operations
+#### Terminal operations
 
 These operations collect or reduce the content on the stream and are either void, or return a non-stream result. Only one terminal operation can be performed.
 

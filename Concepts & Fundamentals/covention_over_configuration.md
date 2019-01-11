@@ -1,4 +1,4 @@
-#Convention over Configuration
+# Convention over Configuration
 
 **Also known as coding by convention**
 
@@ -19,13 +19,13 @@ In general, it is logical to assume that on frameworks that have the *coding by 
 
 Another helpful way to put it is: Whenever you think, wow, how the hell does the framework know where to go and find things I placed, or how does it know how I called them... it most likely is because it practices coding by convention, since it is simply assuming you created your app the conventional way so it already knows where to go to find things.
 
-#####Disadvantages
+##### Disadvantages
 
 * Conflicts with other software principle designs, (Python's "Explicit is better than implicit")
 * Frameworks based on convention over configuration often involve a domain-specific language with a limited set of constructs OR an inversion of control in which a developer can only affect behaviour using a limited set of hooks. Both can make implementing behaviors not easily expressed by convention more difficult *than* using a software library that does not try to decrease the number of decisions developers have to make or require inversion of control.
 
 
-#####Frameworks that use Convention over Configuration
+##### Frameworks that use Convention over Configuration
 
 * Ruby on rails
 * Apache Maven

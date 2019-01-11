@@ -1,4 +1,4 @@
-#REACT
+# REACT
 
 Javascript **library** for building user interfaces. 
 
@@ -8,14 +8,14 @@ User interface creation becomes practical since React works in components. Every
 
 A benefit of creating a single web application (manageable with react and other libraries such as angular or vue) is that only a single call to a server for a page is done, and everything else you see in the browser are components changing, and even if its taking a while to change we can add a customized spinner or something to improve the UX. Otherwise, every time you go to a subpage or click something a call to the server would be made and we would have to wait for it to  with a new page and wait for it to render. (single page app - you manage everything with javascript with no need to reload pages)
 
-###REACT DOM
+### REACT DOM
 React package that helps us render our components to the DOM.
 
-###BABEL
+### BABEL
 React tool that compiles react code in order for it to work correctly in the browser. (jsx)
 
 
-###FOLDER STRUCTURE
+### FOLDER STRUCTURE
 
 **package.json** defines all our dependencies (has our scripts as well)
 **node modules** holds the dependencies and sub-dependencies (generated automatically)
@@ -25,11 +25,11 @@ React tool that compiles react code in order for it to work correctly in the bro
 It is good convetion to create folders in the Src folder for each component src>Person>Person.js 
 
 
-###REACT INTRODUCTION
+### REACT INTRODUCTION
 
 The main capabilities that react has is being able to create components (which always return js)x made out of javascript functions, which contain jsx (html elements). We can name this components however we like, we can add properties to this components (props) including functions, and we can render them by anchoring them to specific divs:
 
-#####Prop example
+##### Prop example
 ```javascript
 <!-- component example -->
 
@@ -83,7 +83,7 @@ class App extends Component {
 
 ```
 
-###USING JAVASCRIPT IN YOUR JSX
+### USING JAVASCRIPT IN YOUR JSX
 
 In order to use javascript in our html elements that are created through jsx (in other words, serve dynamic information to the webpage), we need to add braces to the html element:
 
@@ -99,7 +99,7 @@ export default person;
 
 ```
 
-###PROPS VS CHILDREN
+### PROPS VS CHILDREN
 
 Props are attributes that are being passed into jsx by adding html elements to the component. Children are also passed into the component, but it is not passed as an html element but instead it passed by adding the information for the children between the open and closing tag of the component:
 
@@ -118,7 +118,7 @@ Props are attributes that are being passed into jsx by adding html elements to t
 
 Children doesn't have to be only text, it could be nested html (unordered list) or other components even.
 
-###STATE
+### STATE
 
 State is a special property that is managed inside a component, and are **only available in classes that are extending components from react**. It is not available in function components.
 
@@ -188,7 +188,7 @@ switchNameHandler = (newName) => {
 
 
 ```
-###BEST PRACTICES
+### BEST PRACTICES
 
 You should try and create components through functions (not extending component) as often as possible, because we can't use state inside of it (or call setState for example), because that allows us to create components where it is very clear what the components do, they only render something to the DOM, they are dynamic through changing props that are passed in, and they DON'T affect your application's state... they should just render something to the DOM. The state should only be handled in a few selected components, also called containers.
 
@@ -197,11 +197,11 @@ You should try and name any method that *you are calling from an event* with the
 Always update state in an inmutable fashion (without mutating original state). Create a copy of the state, modify this copy and then update the state with setState.  
 
 
-###PASS INFO FROM INFO TO COMPONENT
+### PASS INFO FROM INFO TO COMPONENT
 
 There is an event type called onChange, you can add it to an input element and whatever you pass in will be executed when the values in the input change. You can pass in the event onChange a function 
 
-###STYLING
+### STYLING
 
 There are two ways to style... either through normal css files, or by adding a variable that contains an object in the form of a css element (map with keys and values as strings, and passing that variable inline in the element by passing the javascript variable)
 ```javascript
@@ -224,7 +224,7 @@ There are two ways to style... either through normal css files, or by adding a v
 
 
 ```
-###CONDITIONAL LOGIC WHEN RENDERING
+### CONDITIONAL LOGIC WHEN RENDERING
 
 There are two main ways. The first is by running ternary operators inside braces **on the jsx**, and depending on some boolean variable that changes outside choose what to render.
 
@@ -265,7 +265,7 @@ examples:
 
 ```
 
-###CREATING A LIST
+### CREATING A LIST
 
 From the examples throughout (above), the way I was rendering was by creating three or more components by copying pasting on the render method with different props. If we instead decide to render a variable that contains the components, how about instead of copying and pasting components, we create a map function that returns an array only describing what the component is going to look like once and passing the information related to that specific array through its state?
 
@@ -300,7 +300,7 @@ From the examples throughout (above), the way I was rendering was by creating th
 
 
 
-#NOTES
+# NOTES
 
 DEBUGGING A JSX FILE
 There are two optios for debugging a jsx file. The first is to add console.logs to the code, which will print output to the chrome dev tools console to see what you are trying to console.log.

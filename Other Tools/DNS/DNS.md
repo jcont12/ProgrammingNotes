@@ -1,4 +1,4 @@
-#DOMAIN NAME SYSTEM (DNS)
+# DOMAIN NAME SYSTEM (DNS)
 
 DNS is one of the most importat technologies on the internet. It provides a *name* (hostname) to *number* (IP address) **mapping** or translation. This allows internet users to be able to easily remember names instead of numbers to access resources on the internet.
 
@@ -8,7 +8,7 @@ IP addresses, being numbers, are easy for a computer to process but a lot toughe
 
 It is because of this that we create **host names** which are names that we use to identify individual devices on a network.
 
-##HOSTS FILE
+## HOSTS FILE
 The hosts file is a simple text file that maps hosts names to IP addresses. 
 
 This process allows for people to comunicate to a computer by name, and their computer translates the name to an IP address that is needed to communicate with it.

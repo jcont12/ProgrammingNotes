@@ -1,4 +1,4 @@
-#IMPORTS AND EXPORTS
+# IMPORTS AND EXPORTS
 
 This is specific to IE6 (javascript 6) and on...
 
