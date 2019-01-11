@@ -12,3 +12,42 @@ java method reference
 
 
 
+#SMARTSHEET ADVANCEMENT NEEDS
+
+- Coding -
+Features for scale
+Good Comments
+
+- Code Review -
+Style
+Minteinability
+
+- Debug/Troubleshoot - 
+gather good examples
+
+- Design -
+Understand
+Create design implementations
+
+- Tech Areas - 
+data structures, libraries, and tools.
+
+- Quality - *to decide*
+
+
+
+Timeframe
+React jan/feb/mar
+Java apr/may/jun
+
+Topics
+OOP - enc inh poly
+TDD
+Data structures - common usable data structures/familiarity
+Agile/Scrum/PM/testing
+java things (enums,interfaces,abstract classes, generics, method references, )
+Troubleshooting infra/ops/ecosystem/big 
+
+Every 6 week:
+- small write up
+- every quarter, review plan

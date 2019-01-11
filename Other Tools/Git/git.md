@@ -122,6 +122,8 @@ when you want a branch to follow a remote branch, you should run this command  g
 ###GIT RESET TO LAST COMMIT
 https://sethrobertson.github.io/GitFixUm/fixup.html#remove_last 
 
+To remove the last commit from git, you can simply run `git reset --hard HEAD^` If you are removing multiple commits from the top, you can run `git reset --hard HEAD~2` to remove the last two commits. You can increase the number to remove even more commits.
+
 
 ###HOW TO UNDO YOUR GIT RESET
 https://stackoverflow.com/questions/2510276/how-to-undo-git-reset 
@@ -151,3 +153,7 @@ Once you do that, make sure to run `git fetch <name>` in order for local to actu
 
 that will add the persons remote to your posible remote repos, and therefore checking all branches will show his remote branches, so follow last point.
 
+###GIT CHERRY PICK
+
+If you would only like for specific commits on a branch to be added to another branch, you use cherry pick. 
+https://www.previousnext.com.au/blog/intro-cherry-picking-git
