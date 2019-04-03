@@ -8,7 +8,7 @@ As it is easy to observe, OOP is based on the real world. There are billions of 
 
 [Helpful link]("https://medium.freecodecamp.org/object-oriented-programming-concepts-21bb035f7260");
 
-### ENCAPSULATION
+### ENCAPSULATION (Think of a pill (capsule) with two sides (colors) - one side is the fields and the other the data )
 
 Encapsulation is the ability to keep a class' information in a *private* state (inside of the class). 
 
@@ -44,7 +44,7 @@ What they can do is defined in the public methods play() and feed(). Each of the
 This is encapsulation.
 
 
-### ABSTRACTION
+### ABSTRACTION (AbstrArt -> picasso -> women -> make womens privates privates and other parts public)
 
 Abstraction is an **extension** of encapsulation. 
 

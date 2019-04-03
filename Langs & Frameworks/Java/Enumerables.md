@@ -1,30 +1,66 @@
-From my understanding so far, think of enum as a class factory that will create an instance of a class for you without having to pass all the arguments required in the constructor when initialized. Instead, the enum has constants with all the parameters already set, so instead of doing:
+# ENUMS (Enumerations)
 
-Person person1 = new Person("jorge", 29, "male", "awesome", 5'11, 178)
-Person person2 = new Person("fer", 25, "female", "beautiful", 5'6, 120)
+Thinks of enums as a factory for instances that have the same number of properties and behavior but that change depending on the enum type. 
+
+So think of it as a class factory that will create an instance of a class for you without having to pass all the arguments required in the constructor when initialized. Instead, the enum has constants with all the parameters already set, so instead of doing:
+
+```java
+
+Person jorge = new Person("jorge", 29, "male", "awesome", 511, 178);{}
+Person fernanda = new Person("fer", 25, "female", "beautiful", 56, 120);
+
+```
 
 You set all those parameters(which will be constant per each object) in an enum, set getters, setters and constructor in enum, and then just use dot notation to instatiate them:
 
+```java
 public enum Person{
-Jorge ("jorge", 29, "male", "awesome", 5'11, 178)
-Fer("fer", 25, "female", "beautiful", 5'6, 120)
 
-(this is a constructor for enum ->)
-Person(name, age,gender,characteristics,height,weight){
-this.name = name; 
-this.etc = etc;
-(possibility maybe of doing this(name,age,char..)
+	JORGE 	("jorge", 29, "male", "awesome", 511, 178),
+	FER     ("fer", 25, "female", "beautiful", 56, 120);
+}
+```
+
+**Make sure your file is an enumerable file if its only going to be an enum, otherwise it can live on a class**	
+
+### EXAMPLE
+
+```java
+// enum is recognized in java as a type
+public enum Fruit {
+
+	APPLE ("red", "sweet", 0.1),
+	BANANA ("yellow", "sweet", 0.5),
+	ORANGE  ("orange", "sweet", 1.5);
+
+	private String color;
+	private String taste;
+	private double weight;
+	private boolean fresh = false;
+
+	Fruit (String color, String taste, double weight){
+		this.color = color;
+		this.taste = taste;
+		this.weight = weight;
+		this.fresh = true;
+	}
+
+	public void rot() {
+		this.fresh = false;
+	}
 }
 
-}
+// and to create and use them:
 
-public otherClass {
-Person person1 = Person.Jorge
-Person person2 = Person.Fer
-}
+	Fruit apple = Fruit.APPLE;
 
-this way, in order to create a new person you just add it to the enum!!
- 
+	apple.rot();
+```
 
+### OTHER NOTES
 
-public Person
+* Enums are named singular
+* the names of enum types are uppercase since they are constants
+* the word enum is a JAVA keyword
+* It is useful to think of enum types as data sets where you know all possible values at compile time. (think of planets, days of the week, months)
+* enums have a static **values** method implicitly that returns an array containing all of the values of the enum in the order they are declared.
