@@ -1,4 +1,4 @@
-CORS (Cross Origin Resource Sharing)
+# CORS (Cross Origin Resource Sharing)
 
 CORS is a mechanism that user agents (browsers) use in order to protect server information from being changed/modified through strong HTTP requests (everything except a GET)  made by a server on a different origin.
 

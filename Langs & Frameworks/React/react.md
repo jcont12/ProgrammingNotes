@@ -340,7 +340,11 @@ After render, it Renders child components. (traverses the child nodes)
 
 ##### Use Effect method
 
-useEffect is a method that mixes the functionality of all class based lifecycle hook in one react hook. This can be used in stateless components (functional components). You have to import it from React
+useEffect is a method that mixes the functionality of all class based lifecycle hooks in one react hook. This can be used in stateless components (functional components). You have to import it from React
+
+useEffect takes in a function as its first param that will run on every render cycle. It also takes a second argument that is an array so that you can specify which objects you want the useEffect method to run when changed. A neat trick is that if you pass in an empty array as the second argument, useEffect will only run on the first time it renders something, and never again.
+
+If you add a return statement that returns a function, this function can be used as a cleanup function, or the equivalent of whichever function you want to run un the componentWillUnmount
 
 
 

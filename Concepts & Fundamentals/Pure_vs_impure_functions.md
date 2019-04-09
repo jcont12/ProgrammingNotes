@@ -1,4 +1,4 @@
-# Pure vs impure functions
+# PURE VS IMPURE FUNCTIONS
 
 Pure functions are functions that are called and return information ONLY using the argument given (if any). They don't have side effects (see below), They don't modify or overwrite the items passed through them.
 

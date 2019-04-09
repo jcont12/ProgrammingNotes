@@ -1,8 +1,10 @@
+# STATIC METHODS
 
 Static Methods are methods that belong to the class and not to a particular instance of the class (you can use it without having to generate an instance of the class).
 
+```JAVA
 
-You cannot access instance variables from static methods.
+// You cannot access instance variables from static methods.
 
 public class Example {
     private Object instanceVariable;
@@ -11,7 +13,8 @@ public class Example {
         this.instanceVariable = null;
     }
 }
-You can access instance variables from instance methods.
+
+// You can access instance variables from instance methods.
 
 public class Example {
     private Object instanceVariable;
@@ -19,7 +22,8 @@ public class Example {
         this.instanceVariable = null;
     }
 }
-You should not access static variables from instance methods using this.
+
+// You should not access static variables from instance methods using this.
 
 public class Example {
     private static Object staticVariable;
@@ -28,7 +32,8 @@ public class Example {
         this.staticVariable = null;
     }
 }
-You can always access static variables. You should use the class name.
+
+// You can always access static variables. You should use the class name.
 
 public class Example {
     private static Object staticVariable;
@@ -36,6 +41,7 @@ public class Example {
         Example.staticVariable = null;
     }
 }
+```
 
 One rule-of-thumb: ask yourself "does it make sense to call this method, even if no Obj has been constructed yet?" If so, it should definitely be static.
 
