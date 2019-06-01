@@ -96,6 +96,25 @@ that will add the persons remote to your posible remote repos, and therefore che
 
 
 ### GIT CHERRY PICK
-
-If you would only like for specific commits on a branch to be added to another branch, you use cherry pick. 
 https://www.previousnext.com.au/blog/intro-cherry-picking-git
+
+If you would only like for specific commits on a branch to be added to another branch, you use cherry pick:
+
+```
+<!-- On the branch that you will be inserting the specific commits: -->
+
+git cherry-pick d467740 
+
+<!-- This will cherry pick the commit with hash d467740 and add it as a new commit on the master branch. Note: it will have a new (and different) commit ID in the master branch. -->
+
+<!-- If you want to cherry pick more than one commit in one go, you can add their commit IDs separated by a space: -->
+
+git cherry-pick d467740 de906d4
+
+<!-- If the cherry picking gets halted because of conflicts, resolve them and -->
+
+git cherry-pick --continue
+
+<!-- If you want to bail of this step out altogether, just type: -->
+git cherry-pick --abort
+```

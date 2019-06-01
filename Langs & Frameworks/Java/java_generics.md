@@ -24,7 +24,7 @@ public void callOutTheObject(E object){
 
 	System.print.ln("this is a" + object);
 }
-
+```
 
 ### EXAMPLE
 

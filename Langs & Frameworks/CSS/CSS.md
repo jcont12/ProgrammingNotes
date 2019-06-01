@@ -50,3 +50,30 @@ If you add two classes to an element separated by a space, you can specifically 
 Span elements are inline elements. (for a great example on inline vs block elements: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)
 
 A span element for obvious reasons has a display property of **inline**. Inline elements can only modify their spacing (margin/padding) horizontally, not vertically. To do so, you must add the `display: block` property, or in order to NOT loose the inline behavior, the `display:inline-block` property.
+
+
+### CSS AMPERSAND
+
+https://stackoverflow.com/questions/49401307/what-is-the-meaning-of-ampersand-in-selectors
+
+The ampersand (& icon) In css in a nested element refers to its parent element
+
+```css
+
+//after
+.button {
+  body.page-about & { }
+}
+
+// actions
+.button {
+  &:visited { }
+  &:hover { }
+  &:active { }
+}
+
+//before
+.parent {
+  & .child {}
+}
+```

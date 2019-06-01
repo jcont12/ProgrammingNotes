@@ -140,6 +140,28 @@ State is a special property that is managed inside a component, and is **only av
 
 To change state, use the METHOD setState (remember it is a method, so pass in as argument how you want a state object to look like when it changes state. setState merges the new object to the old state, so it only manipulates objects within the stage that match.)
 
+If you are going to be making a state change that depends on the previous state (say you have a counter, and the counter will increment plus one by whatever the state is, or you are going to add a node to a tree and the number of the node will depend on the current number of nodes on the state), you should not be updating through this.state, but instead you should be updating through prevState... for example:
+
+```javascript
+// works, but wrong... this.state could have changed whilst this call is scheduled and waits for all resources to be ready to render
+this.setState({
+  counter: this.state.counter + 1
+})
+
+// this guarantees you will be working with the old state you were depending on
+
+this.setState(prevState, props) => {
+  return {
+    counter: prevState.counter + 1
+  };
+};
+
+
+
+````
+
+The reason is because behind the scenes setState does not immediately trigger an update of the state of a component in the re-render cycle, instead it schedules it, and will perform the update when it has the resources to do it. Usually it will be instantly, but its NOT guaranteed to execute and update immediately. If you were calling another setState method simoultaneously and that call updates the state before your call finishes, so you would be updating an unexpected, modified state.
+
 **Use state with care, having too many states in different components makes your app confusing and unpredictable.**
 
 ### PASSING IN METHODS IN A COMPONENT AS PROPS
@@ -203,6 +225,43 @@ switchNameHandler = (newName) => {
 }
 
 
+```
+
+##### Onclick case
+
+You had a question once were you were trying to get a component to run a method upon clicking it. You were approaching the wrong way by expecting the passed in prop to automatically call the passed in function. Remember, since you are passing it down, you have to actually call it on the component that is being passed down to, otherwise, it is just another prop floating in the air:
+
+```javascript
+
+class NotificationMenu extends Component<Props> {
+
+  onClickFunction() => {
+    console.log("I was clicked");
+  }
+
+render(){
+  return(
+    <Notifications
+      onClick{this.onClickFunction}
+    />
+    )
+}
+
+// By this point you were expecting it to work. Why would'nt you? When NotificationDetails gets clicked, run the function. But you are only passing the function down, it is down on the component that you hace to ensure an HTML elements gets clicked and calls the function
+
+class Notifications extends Component<Props> {
+  props: Props;
+
+render(){
+  return(
+    <div onCLick={onClick}> 
+    // cause it was passed down as onClick
+      <p> I am a notification </p>
+    </div>
+    )
+}
+
+//NOW IT WORKS!!!
 ```
 
 ### PASS INFO FROM INPUT TO COMPONENT
@@ -346,7 +405,17 @@ useEffect takes in a function as its first param that will run on every render c
 
 If you add a return statement that returns a function, this function can be used as a cleanup function, or the equivalent of whichever function you want to run un the componentWillUnmount
 
+### When to optimize
 
+Should we always use shouldComponentUpdate on every component and React.memo on every functional component? Not really, cause they both are extra code that you are running. So you have to make sure you implement it only in components that should not change when their parent changes. If your component is supposed to change when their parent changes (which is very common), then there is no need to check if component should update or not.
+
+### React.memo
+
+Is a tool to prevent re-rendering of functional components unless their content actually changes. In order to use this, you can wrap the component on its export declaration with **React.memo(*component*)**. This memoizes the component and only changes when its input changes. If a parent component renders and tries to re-render the component, React will give back this stored component. In order for this to work properly, be careful and make sure that you are not calculating or getting info within the component, but instead **only** passing the information that the component should present when it is being rendered. (even using dot notation to access a component is considered getting info within the component)
+
+### HIGHER ORDER COMPONENTS (HOCs)
+
+Higher Order Components are custom components that you can create that have a specific behaviour that can be used as jsx wrappers in order to provide a component with specific functionality. For example, you can create an ErrorHandling component that can be wrapped around any component that makes an http request, or a div "WithClass" component that all it does is it receives a prop that adds the passed prop to the class as a div, so whenever you create a component you can wrap it with the WithClass component and pass in the class name as a prop
 
 
 ### REACT BEST PRACTICES
@@ -358,6 +427,9 @@ You should try and name any method that *you are calling from an event* with the
 Always update state in an inmutable fashion (without mutating original state). Create a copy of the state, modify this copy and then update the state with setState.  
 
 
+### CONTEXT
+
+To prevent mistakes that can result from prop chaining (passing props from one component to another to another to another) there is a React built in tool called Context, which creates a global context object that can be used to store information from a component and provide information to a component.
 
 
 # NOTES

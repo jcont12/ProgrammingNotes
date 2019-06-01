@@ -8,6 +8,32 @@ Think of the **abstract** word... something that is abstract is not a real physi
 
 Abstract classes are similar to interfaces, however abstract classes can contain their own method implementations that then can be either used or overriden by their subclasses. Abstract classes, like interfaces, can also define a method that subclasses have to abide to. They are called abstract methods and the **abstract** keyword must be defined in the method signature.
 
+```java
+
+public abstract Fighter{
+
+// we CAN have fields
+	private int hp;
+	public  
+
+// we CAN have a constructor (if subclasses share basic usage of constructor through super)
+	public Fighter
+
+
+// we CAN have methods with logic if we want to if they'll be shared by subclasses
+	public void death(){};
+
+// THIS IS THE IMPORTANT PART...ABSTRACT METHODS
+	abstract void attack();
+
+	abstract void defend();
+
+	abstract String yell(String warMotto);
+
+};
+
+```
+
 ### WHEN TO USE AN ABSTRACT CLASS OVER AN INTERFACE
 
 If there are a lot of methods in a contract, then abstract class is more useful because we can provide default implementation for some of the methods that are common for all the subclasses. Also if subclasses don’t need to implement particular method, they can avoid providing the implementation but in case of interface, the subclass will have to provide implementation for all the methods even though it’s of no use and implementation is just empty block.
@@ -17,3 +43,4 @@ If there are a lot of methods in a contract, then abstract class is more useful 
 * The subclass of abstract class in java must implement all the abstract methods unless the subclass is also an abstract class.
 * Java Abstract class can implement interfaces without even providing the implementation of interface methods.	
 * Abstract classes can have constructors but interfaces can’t have constructors.
+
