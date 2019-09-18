@@ -21,7 +21,8 @@ public methodThatWillUseReduceInTypescript(xNumber: Integer): array[] {
                 // do many cool things... or:
                 accumulator.push(currentValue);
 
-                }, []);
+                }, []
+            );
 
             //the reduced array result is simply a variable that will hold the result of the reduce function, so we have to return it since the method is asking us for an array
             return ReducedArrayResult;

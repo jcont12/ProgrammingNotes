@@ -44,7 +44,7 @@ What they can do is defined in the public methods play() and feed(). Each of the
 This is encapsulation.
 
 
-### ABSTRACTION (AbstrArt -> picasso -> women -> make womens privates privates and other parts public)
+### ABSTRACTION (AbstrArt -> picasso -> women -> make womens privates privates and other parts public... lol)
 
 Abstraction is an **extension** of encapsulation. 
 
