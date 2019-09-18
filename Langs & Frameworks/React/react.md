@@ -410,7 +410,7 @@ If you add a return statement that returns a function, this function can be used
 Should we always use shouldComponentUpdate on every component and React.memo on every functional component? Not really, cause they both are extra code that you are running. So you have to make sure you implement it only in components that should not change when their parent changes. If your component is supposed to change when their parent changes (which is very common), then there is no need to check if component should update or not.
 
 ### React.memo
-
+s
 Is a tool to prevent re-rendering of functional components unless their content actually changes. In order to use this, you can wrap the component on its export declaration with **React.memo(*component*)**. This memoizes the component and only changes when its input changes. If a parent component renders and tries to re-render the component, React will give back this stored component. In order for this to work properly, be careful and make sure that you are not calculating or getting info within the component, but instead **only** passing the information that the component should present when it is being rendered. (even using dot notation to access a component is considered getting info within the component)
 
 ### HIGHER ORDER COMPONENTS (HOCs)
