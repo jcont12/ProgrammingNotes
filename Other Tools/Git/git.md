@@ -118,3 +118,25 @@ git cherry-pick --continue
 <!-- If you want to bail of this step out altogether, just type: -->
 git cherry-pick --abort
 ```
+
+### GIT REBASE OR GIT MERGE
+
+One simple rule.... you should NEVER rebase a shared branch!!!! You should only be rebasing your personal branches. The reason for this is that Git Rebase rewrites git history (and by git history I mean commit hashcodes (your commits) which eeeeeeek see below) and a git merge doesn't. So you should only want to re-write history on a branch that belongs to only you!!.
+
+Changing the commits hashcodes SUCKS! because other peoples local have the source branch hashcodes, and so they are expecting those to be the same to compare against when pushing/pulling, and if someone suddenly changed those hashcodes.... eesh, you get the idea. SO ONLY ON PERSONAL BRANCHES!!!!
+
+Additional Note - When you had a branch that was behind its source branch by >100 commits, you did a test to see what the difference would look like. (FYI you only had two commits). Here is what happened:
+
+* git rebase - it brought in all of the commits from the source branch, and neatly placed your commits on top of them. 
+
+* git merge - it brought in all of the commits from the source branch, ordering them by date. So it split up my two commits and placed all other commits between them ordered by date, and additionally created a new commit, the merge branch commit on top of everything.
+
+What about Git Conflicts?
+
+* git rebase -  Git does a commit by commit saving, so it will find the conflict after its placed all the earlier commits under you and tries to place the commit on top, so you would have to resolve the conflict, and re-save your commit (so the changes that were made due to the conflict get saved on your commit). And yes, this could obviously trigger a resolve conflict on several commits, as once your conflict is resolved it will pull in your next commit which it could have more conflicts with.
+
+* git merge - the whole resolving of commits gets saved in the 'merge branch commit '
+
+What happens if I rebase my personal branch on top of a local source branch, and then force push (NEVER FORCE PUSH! it didnt complain because branches were the same except for my new commit.... but use push instead!) my rebased local branch to the remote source branch:
+
+* I took a screenshot of the commits and their hashes before I pushed and after. The commit hashes didn't change, and my commit appeared at the top! 

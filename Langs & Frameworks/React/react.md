@@ -164,6 +164,8 @@ The reason is because behind the scenes setState does not immediately trigger an
 
 **Use state with care, having too many states in different components makes your app confusing and unpredictable.**
 
+Make sure you use state at the level where the state matters, in other words, don't put state at app level if it doesnt affect whole app, add state in component where state matters. Obviously the component where it is added will be a stateful component.
+
 ### PASSING IN METHODS IN A COMPONENT AS PROPS
 
 If we add an eventHandler such as onClick to pass in a method once the button is clicked, make sure you pass this.methodName *without parens* as it is only a method reference. If you pass parens, the method will execute upon rendering.
@@ -425,7 +427,7 @@ You should try and create components through functions (not extending component)
 You should try and name any method that *you are calling from an event* with the words HANDLER (switchNameHandler).
 
 Always update state in an inmutable fashion (without mutating original state). Create a copy of the state, modify this copy and then update the state with setState.  
-
+It is always a good idea to begin by planning what the components hierarchy is going to look like, what components are we going to be using, and figure out which components will become containers (will hold state).
 
 ### CONTEXT
 
