@@ -70,6 +70,12 @@ Creates a spliterator over the elements in this collection
 Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array.
 
 
+### List vs Set... when should I use one vs the other???
+
+A list and a set are both subclasses of the Collection Interfase. The difference is that Lists **allow for duplicates and also have order, so you can obtain elements through the order**, while sets have neither.
+
+
+
 # Questions
 
 * What is a synchronization policy in a collection?

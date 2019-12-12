@@ -1,7 +1,7 @@
 # BEST PRACTICES
 
 ### Avoid modifying parameters
-Avoid creating a method to change/modify a parameterand and return the same object with a changed parameter (confusing).
+Avoid creating a method to change/modify a parameter and return the same object with a changed parameter (confusing).
 
 ### Abstract classes apply to similar objects
 If you are writing an abstract class make sure that the classes that are using the methods defined in the abstract class are similar (and their common denominator is the java's Object class for example).
@@ -39,22 +39,41 @@ public class Animal {
 	boolean hasEars;
 	.....
 
-	//builder pattern
-	public Animal create(){
-		return new Animal(); 
-	}
+	// private constructor to be used by builder pattern
+	private Animal() {};
 
-	public void hasEyes(boolean flag){
-		this.hasEyes = flag;
-	}
+	//builder pattern class
+	public static class Builder {
+		private Animal animal;
 
-	public void howManyLegs(int legs){
-		this.hasLegs = int;
+		public Builder() {
+			animal = new Animal();
+		}
+
+
+		public Builder hasEyes(boolean flag){
+			animal.hasEyes = flag;
+		}
+
+		public Builder howManyLegs(int legs){
+			animal.hasLegs = int;
+		}
+
+		public Builder build() {
+			//do all necessary checks before returning built animal
+			Preconditions.checkNotNull(animal.hasEyes, "animal must have eyes");
+			return animal;
+		}
 	}
 }
 
+
 //on another file you see this (very readable and understandable):
-Animal cheetah = Animal.create().hasEyes(true).howManyLegs(4).canFly(false)
+Animal cheetah = new Animal.Builder()
+				.hasEyes(true)
+				.howManyLegs(4)
+				.canFly(false)
+				.build()
 
 
 ```
