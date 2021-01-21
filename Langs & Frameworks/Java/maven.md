@@ -1,4 +1,4 @@
-# MAVEN
+# Maven
 
 Maven is a Build tool to build source code and produce *one* artifact (a component: war, jar, zip file).
 

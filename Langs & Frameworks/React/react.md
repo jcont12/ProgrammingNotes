@@ -43,7 +43,7 @@ The main capabilities that react has is being able to create components (which a
 
 ##### Creating a component, passing props to it and anchoring it to a div
 
-```javascript
+```js
 // component example 
 
 function Dog = () => {
@@ -67,7 +67,7 @@ A very common practice is to wrap all the reactDom.render methods in a single va
 
 ##### Anchoring several components to single div (app div)
 
-```javascript
+```js
 var app = (
 	<div>
 		<Dog name="fido" breed="corgi" />
@@ -446,4 +446,9 @@ Remember that any information you want to show has to be saved somewhere in the 
 HOW TO PASS THE RETURN OF A OPSJAVA FILE TO ITS CORRESPONDING JSX FILE
 Through the Api.jsx file endpoints. Assign the endpoint that connects your jsx file to your opsresource file.
 
+
+# FAQ
+
+**Sequential state calls within a component... will they update in order or correctly? Will it cause the component to re-render once or multiple times?**
+(https://stackoverflow.com/questions/48563650/does-react-keep-the-order-for-state-updates)[Awesome stack overflow answer]
 
