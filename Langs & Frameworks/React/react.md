@@ -249,7 +249,7 @@ render(){
     )
 }
 
-// By this point you were expecting it to work. Why would'nt you? When NotificationDetails gets clicked, run the function. But you are only passing the function down, it is down on the component that you hace to ensure an HTML elements gets clicked and calls the function
+// By this point you were expecting it to work. Why would'nt you? When NotificationDetails gets clicked, run the function. But you are only passing the function down, it is down on the component that you have to ensure an HTML elements gets clicked and calls the function
 
 class Notifications extends Component<Props> {
   props: Props;
@@ -452,3 +452,6 @@ Through the Api.jsx file endpoints. Assign the endpoint that connects your jsx f
 **Sequential state calls within a component... will they update in order or correctly? Will it cause the component to re-render once or multiple times?**
 (https://stackoverflow.com/questions/48563650/does-react-keep-the-order-for-state-updates)[Awesome stack overflow answer]
 
+
+**When should I use React's local state and when should I use redux??**
+(https://stackoverflow.com/questions/41584647/when-do-i-choose-react-state-vs-redux-store)[no rule of thumb, but for local state not shared with other components use react state]

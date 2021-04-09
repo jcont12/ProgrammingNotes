@@ -22,3 +22,6 @@ useTheData(object.data);
 ```
 
 So which one is better? tbh, both work just fine as this error should never be called as the object and the data will always be there. **BUT** what happens if someone changes the code and at some point the error is actually called? Would you rather get a NULL pointer exception? Or would you rather get a detailed Error of what is missing? Therefore doing a null validation where you get to define the error message is way better than using an exclamation mark.
+
+
+### Discrimnated Unions
