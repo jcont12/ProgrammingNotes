@@ -1,4 +1,4 @@
-# Terraform
+	# Terraform
 
 (https://www.youtube.com/watch?v=vwn77cUarTs&list=PL8HowI-L-3_9bkocmR3JahQ4Y-Pbqs2Nt)[Learning material]
 
@@ -296,7 +296,7 @@ resource "aws_instance""web" {
 ```
 
 
-### EXPRESIONS
+### EXPRESSIONS
 
 Shorthand if/else statement is pretty much a ternary operator:   local.baz == "aaa" ? "yes" : "no"
 
@@ -442,6 +442,54 @@ Whenever we create a new module or child module, don't forget to run terraform i
 
 Interestingly enough you can also package modules and publish them to terraform!
 
+
+### WORKSPACES
+
+Workspaces allow you to have multiple state files (multiple sets of state)! This can help for example to differentiate dev environment infra from prod environment infra, to freely change any of them without impacting the state of the other!
+
+When you start your terraform you actually have a workspace, the default workspace. If you run the command line **terrafrom workspace list** you will see the default workspace listed there.
+
+To create a new workspace, you can run **terraform workspace new [name]**, so if you run list after you'll see it.
+
+I think by now you got the hang of it... its like git branches :) with the difference that you have access to that access name within your files:
+
+```terraform
+
+locals {
+
+	instance_name = "${terraform.workspace}-instance"
+
+}
+
+```
+
+Also, we can have different variable files for different workspaces. You can create 2 files (dev.tfvars and prod.tfvars) and fill them up accordingly, and when running your terraform apply, you can specify which var files to use: **terraform apply -var-file prod.tfvars**. After this you will realize that the state files will show that only the prod state file will have been altered with the variables from prod.tfvars.
+
+
+### BACKENDS AND REMOTE STATES
+
+If you work on a team or with CI/CD, having a local state won't fly (you thought about this issue thinking if you had to commit or how it worked). The way this works is through remote state.
+
+Instead of running your state locally, it stores it elsewhere (like an S3 bucket in aws), so that if I make a change right now, it will fetch the data from S3 and place the changes back on S3, that way there's no collision issues with teammates (unless you know, exact same time, for which there is state locking to help out)
+
+
+To define it yourself, you can do it on your terraform keyword:
+
+```Terraform
+
+
+terraform {
+
+	backend "s3" {
+		bucket = "foo"
+		key    = "foo/terraform.tfstate"
+		region = "us-west-2"
+	}
+}
+
+
+```
+When we run **terraform init** terraform also looks for this back-ends and initializes them, if we already have local state terraform actually identifies that state and asks you if you'd like terraform to migrate it to your backend.
 ### FAQ
 
 * **After modifying I see an "Update in place" text... what does it mean?**

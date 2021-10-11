@@ -76,7 +76,9 @@ parallel downloads: Yarn uses parallel workers to download packages, thus maximi
 
 Both npm and Yarn keeps track of the project’s dependencies and their version numbers in the package.json file. Whenever you install dependencies, you may notice that the dependency’s version may start with `^` before the version number. This means that whenever we install all the packages in another machine, or manually run the command to install, the package manager looks for newer versions released. If there is a newer version then that is automatically installed rather than the one mentioned in the package file. There are two ways to avoid this if you don’t want automatic change in your packages, one is to generate a lock file, so that only a particular version is installed every single time and the other is to remove `^` in the package file.
 
+### YARN LOCK
 
+yarn lock keeps track of the actual dependency tree on the moment of installation or updates... basically LOCKING down the dependencies in your application. In other words, every time you run yarn install, yarn lock will be generated. If you modify a file manually in package.json, make sure to run yarn install so that the file can be generated automatically. (https://robertcooper.me/post/how-yarn-lock-files-work-and-upgrading-dependencies) SO **YES, your yarn.lock file should be committed as it is basically sharing with the team what the actual state of the dependency tree is**.
 
 ### FAQ
 
@@ -86,7 +88,7 @@ As you can imagine, upgrades on versions are supposed to be backwards compatible
 **How can I install a specific version of a package into my app?**
 by adding an '@version_number' to npm install! -> *npm install lodash@4.17.3 --save* (don't forget --save to add to package.json!) If you run npm update lodash right after it will install the newest version of lodash
 
-**I always forget version number nomenclature. reminde me?**
+**I always forget version number nomenclature. remind me?**
 
 If developed by good developers:
 

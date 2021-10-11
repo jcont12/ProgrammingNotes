@@ -1,4 +1,3 @@
-
 # DYNAMICALLY VS STATICALLY TYPED LANGUAGES
 
 In a statically typed language, all variable types are known at compile time. In this languages the developer must specify which type each variable is (java, C++).

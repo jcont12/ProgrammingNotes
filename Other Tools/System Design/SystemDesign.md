@@ -2,6 +2,18 @@
 
 ### SYSTEM PROPERTIES
 
+Not sure where this goes.... but the levels of getting information for your app goes like this (approximate scaling to seconds):
+Access type         reality		  scale to seconds    
+CPU cycle 			 -	.3ns		- 1s
+CPU level 1 cache 	 -	1ns			- 3s
+CPU level 2 cache 	 -	3ns			- 9s
+CPU level 3 cache    -	13ns		- 43s
+Main Memory (RAM)	 -  120ns		- 6 minutes
+SSD					 -  150 micro	- 6 days
+HDD (hard drive)	 -  100ms 		- 12 months
+SF to NYC			 -  40ms		- 4 years
+SF to Australia	 	 -	183ms		- 19 years
+
 * **Bandwith**
 
 * **Throughpput**

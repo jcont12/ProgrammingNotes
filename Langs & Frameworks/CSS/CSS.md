@@ -77,3 +77,8 @@ The ampersand (& icon) In css in a nested element refers to its parent element
   & .child {}
 }
 ```
+
+
+### DISPLAY CONTENTS
+
+Sometimes because of nested divs/spans, there are elements that have children within children within children. The css value of `display:contents` allows you to "skip" an element so that the styling from the parent skips that element and applies to its children. For example, I was dealing with an "IconDiv" that was simply a colored div that contained an actual Icon within it. Because the Icon itself had a span within a span, the DOM structure of these elements was: IconDiv -> span -> span (where image to display in icon where). I wanted to center the elements within the icon, so I applied `display:flex` and `justify-content: center`, so that the child elements would center on that icon. But these only applied to the first span, so I had to add the same css styling to that child so that I could get its children to be centered. Obviously, creating a ladder of `display:flex` and `justify-content: center` to reach the final children was not optimal, so adding `display:contents` on the first child basically allowed the display and justify css styles to "skip" the first child and apply to this child's children, removing the need for a style ladder.

@@ -13,3 +13,11 @@ Answer: 64
 32 and 64 bit is for the type of system you have.
 
 Go to the System Settings and under the System section, hit Details. You will get every detail including your OS, your processor as well as the fact whether the system is running a 64-bit or a 32-bit version. Open the Ubuntu Software Center and search for lib32 .
+
+### How to install/uninstall
+
+To install a . deb file, simply Right click on the . deb file, and choose Kubuntu Package Menu->Install Package.
+
+Alternatively, you can also install a .deb file by opening a terminal and typing: sudo dpkg -i package_file.deb.
+
+To uninstall a .deb file, remove it using Adept, or type: sudo apt-get remove package_name.

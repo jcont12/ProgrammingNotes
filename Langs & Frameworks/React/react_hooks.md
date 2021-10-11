@@ -154,7 +154,7 @@ function FriendStatus(props) {
 	}
 
 	//useEffect makes sure that on every render and mount we handle subscribe method, and when unmounting the component AND when re-rendering the component  we will run unsubscribe method. 
-	useEfect(() => {
+	useEffect(() => {
 		ChatApi.subscribeToFriendStatus(props.friend.id, handleStatusChange);
 		return () => {
 			ChatApi.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
