@@ -97,7 +97,7 @@ Tha javascript runtime in order to work has the concept of an event loop and a c
 
 **IMPORTANT**- some of the above is WRONG. Your idea that the callback queue gets executed asynchronously and hands over the result to the runtime is WRONG. See the last example of the below code, and more details on the following url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop 
 
-What REALLY happens is that the code in the callback queue is ONLY EXECUTED once the call stack is empty and the event loops fetches the next message in the callback queue. The reason why setTimeout is different is because the first argument is the message to place in the queue, and the second argument is the time to wait BEFORE it places it in the queue!!!!
+What REALLY happens is that the code in the callback queue is ONLY EXECUTED once the call stack is empty and the event loops fetches the next message in the callback queue. The reason why setTimeout is different is because the first argument is the message to place in the queue, and the second argument is **the time to wait BEFORE it places it in the queue!!!!**
 
 ```javascript
 
@@ -1362,6 +1362,34 @@ async function fetchData() {
 
 ```
 
+
+#### DIFFERENT ERRORS (returned by reject vs issue in code!)
+
+```javascript
+
+let promiseFunction = (arg) => {
+    return new Promise((resolve, reject) => {
+        if (arg.length >= 1){
+            console.log("promise passed cause arg's length is larger than 1");
+            resolve("yipee");
+        } else {
+            arg.forEach(() => {});
+            console.log("promise failed because length is smaller than 1");
+            reject("oh no");
+        }
+    }
+)
+}
+
+
+promiseFunction(1).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
+
+//vs
+
+promiseFunction(1).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
+
+```
+
 ### Finally
 
 You might remember seeing the "finally" method used in javascript... finally basically lets you run code REGARDLESS of what happens within the promise (if it fails or it succeeds). You haven't used it yet because usually a path for success and error is enough, but what if you want to make sure that an email is sent to a user detailing whether something failed or succeeded, or you want to log a "latency" metric for the promise that needs to be run after the promise succeeded or failed? Those use cases are fixed by finally. All you have to do is finish your promise chain with finally (i.e. then().then().catch().finally())
@@ -1616,4 +1644,4 @@ Prototypal inheritance is a pretty unique feature from javascript (c sharp or ja
 Surprisingly it is.... because it holds a property object that holds the methods that other child objects will inherit, and only functions have a prototype property. (Try doing typeof Object and see what happens). The reason is that ultimately, Object is THE CONSTRUCTOR for the object wrapper
 
 **Why can't I just get my promise to return so it can give a value to a variable that I am using??**
-This is a common mistake I've made... **tldr- a variable's value can't rely on asynchronous code... the variable MUST have a default value that THEN gets updated by the asynchronous code**. The key reason why you made them is because you didn't know about javascript run-time environment's "infrastructure": a call stack, an event loop that checks for the call stack to be empty, and a callback queue that will only be run (in order) as the call stack becomes empty EDIT: a JOB QUEUE separate from the CALLBACK QUEUE that has higher priority (as of ES6). Javascript, being single-threaded, will run through all of your code, place asynchronous code in a callback queue, and continue running through your code. It is ONLY after its done running your code (when it has finished going through its call stack) that the event loop will realize its empty and will fetch the next code that was placed on the callback queue. So before asynchronous code gets run, your call stack must be allowed to run successfully. Making a variable's value rely on asynchronous code will not work as the value will never be set.
+**tldr- a variable's value can't rely on asynchronous code... the variable MUST have a default value that THEN gets updated by the asynchronous code**. The key reason why you made them is because you didn't know about javascript run-time environment's "infrastructure": a call stack, an event loop that checks for the call stack to be empty, and a callback queue that will only be run (in order) as the call stack becomes empty EDIT: a JOB QUEUE separate from the CALLBACK QUEUE that has higher priority (as of ES6). Javascript, being single-threaded, will run through all of your code, place asynchronous code in a callback queue, and continue running through your code. It is ONLY after its done running your code (when it has finished going through its call stack) that the event loop will realize its empty and will fetch the next code that was placed on the callback queue. So before asynchronous code gets run, your call stack must be allowed to run successfully. Making a variable's value rely on asynchronous code will not work as the value will never be set.
