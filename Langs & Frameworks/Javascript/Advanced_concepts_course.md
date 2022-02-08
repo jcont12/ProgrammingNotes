@@ -2,7 +2,9 @@
 
 **Cheat sheet: https://zerotomastery.io/cheatsheets/javascript-cheatsheet-the-advanced-concepts/?utm_source=udemy&utm_medium=coursecontent#call-stack**
 
-### javascript engine?
+## FUNDAMENTALS
+
+### Javascript Engine
 
 The javascript engine is the translator that allows computers to understand javascript code. There are MANY javascript engines written by very very smart people.
 
@@ -11,17 +13,17 @@ The javascript engine is the translator that allows computers to understand java
 
 * The first javascript engine (SpiderMonkey) was written by Brendan Eich, the creator of javascript! (Its actually used by Firefox).
 
-#### How does a javascript engine work?
+### How does a javascript engine work?
 
 Let's take V8 engine for example:
 
-1.- Lexical analysis: Parses the code in order to break it into tokens to identify their meaning and understand what they are trying to do
-2.- AST: Tokens are formed into an Abstract Syntax Tree (AST). (check out astexplorer.net)
-3.- Interpreter creates bytecode: Takes AST and translates and reads the file line by line on the fly and spits out bytecode to be executed.
-4.- Profiler (also called monitor): Watches code as it runs in the interpreter and analyzes how it can be optimized.
-5.- Compiler creates optimized machine code: Unlike an interpreter, it doesn't translate on the fly, it works ahead of time to translate the code and compiles it to a language that can be understood by our machine. (writes your program in a new language (machine code)!)
+1.- Lexical analysis: Parses the code in order to break it into tokens to identify their meaning and understand what they are trying to do.  
+2.- AST: Tokens are formed into an Abstract Syntax Tree (AST). (check out astexplorer.net)  
+3.- Interpreter creates bytecode: Takes AST and translates and reads the file line by line on the fly and spits out bytecode to be executed.  
+4.- Profiler (also called monitor): Watches code as it runs in the interpreter and analyzes how it can be optimized.  
+5.- Compiler creates optimized machine code: Unlike an interpreter, it doesn't translate on the fly, it works ahead of time to translate the code and compiles it to a language that can be understood by our machine. (writes your program in a new language (machine code)!)  
 
-#### Differences between interpreter and compiler
+### Differences between interpreter and compiler
 
 An interpreter and a compiler will translate the code in different languages... An interpreter can translate your code into ByteCode to execute your code without compiling it, while the compiler translates it into machine code and gives it to your CPU.
 
@@ -36,7 +38,7 @@ Its important to know this low level in order to write better code that the comp
 **FUN FACT**
 * Java's compiler loads the class files and either interprets the bytecode or just-in-time compiles it to machine code and then possibly optimizes it using dynamic compilation. The Java Virtual Machine (JVM) can then interpret the code to execute it and compile it into machine language to optimize it. So as long as devices have a JVM, they will always understand java code. That is why Java has a motto of: Write once, run everywhere. 
 
-##### Javascript deoptimizers (de-optimizers?):
+#### Javascript deoptimizers (de-optimizers?):
 
 * eval()
 * arguments
@@ -46,7 +48,7 @@ Its important to know this low level in order to write better code that the comp
 * Hidden Classes
 * Inline caching
 
-Predictable code is better for user AND compiler
+Predictable code is better for user AND compiler.
 
 ### WebAssembly
 
@@ -72,7 +74,7 @@ How does tha garbage collector work in javascript? It uses "mark and sweep algor
 
 Important note: In your mind you would think memory leaks where stack overflows, but not really. On chrome's console, if you cause a stack overflow (for example call a method within the same method), you will simply get an error on the console as google now handles stack overflow error. On the other hand, memory leaks cause google chrome to completely crash (try it out... create a loop where the condition is never met).
 
-##### Common memory leaks
+### Common memory leaks
 
 **1.- Global Variables -** A variable on a local scope will "always be used/referenced". Therefore, the garbage collector will never clear it out. So if we start adding too many global variables, and they are objects and deeply nested objects, well you can see how the memory could be overused.
 
@@ -305,7 +307,7 @@ Tim is now married to Tina
 
 ```
 
-##### Arguments keyword (and args)
+### Arguments keyword (and args)
 
 It's cool that we have access to the arguments keyword within a function that we can use. However it is important to note that the arguments object is in a weird structure that is kind of like an array in that it has length but it DOESN'T have access to array built-in methods. So the suggestion is that you convert the arguments into an array within the function like so:
 
@@ -327,7 +329,7 @@ Candy given to  Lola
 */
 ```
 
-##### Variable environment
+### Variable environment
 
 As mentioned above each function on the call stack has its own execution context. Within this execution context there is a **variable environment** a place for the variables within the function to live in the execution context. Each execution context is its own little world, and once the function is finished running this world gets wiped out. Seems easy, but check out the following example which really had you guessing all the wrong answers:
 
@@ -490,7 +492,7 @@ JQuery.hideElements(<a>)
 JQuery.findElements(<h1>)    
 ```
 
-## this Keyword
+### this Keyword
 
 A way to think about it: _this_ is the object that the function is a property of. So when you are dealing with this, try and think... what function am I on? ok... and what *object* does this function belong to??? See example below:
 
@@ -704,7 +706,7 @@ console.log('3', archer);
 
 *IMPORTANT* Don't forget about dynamic scope, for the above to work, the heal method should be calling *this*.health. This, when invoked through call and apply, will change the this reference to the object that is borrowing the method!
 
-##### Bind()
+### Bind()
 
 bind() is very similar to call, but instead of immediately executing the function by object b, it ties it so it can be used *later* when invoked... so you can think of it as creating a function expression for it, that will then work as expected when the function is actually invoked:
 
@@ -1266,7 +1268,7 @@ multiplyBy3AndMakeAbsolute(-50) //returns 150
 
 
 
-## Memoization
+### Memoization
 You already know most of what memoization is... basically its mapping the input and result of a function once run, so that the next time its run we first check on the moized map (or 'cache') and if it exists we return that, otherwise we add to the map.
 
 The only extra important thing to mention is that we optimally don't want to fill the cache in the global scope (outside of the function). In order to get it to live within the function, we would leverage closures! 
@@ -1381,13 +1383,18 @@ let promiseFunction = (arg) => {
 )
 }
 
-
-promiseFunction(1).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
+// successful promise
+promiseFunction([1,2]).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
 
 //vs
 
-promiseFunction(1).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
+// successful but rejected promise
+promiseFunction([1]).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
 
+//vs
+
+// failed promise
+promiseFunction(1).then(() => {}).catch((e) => { console.log("Oh no Error!",e) });
 ```
 
 ### Finally
@@ -1417,7 +1424,9 @@ Promises can be run sequentially (then().then().then(), or await promise; await 
 
 As to *allSettled*, it was created in ES2020, and what it allows us to do is to use Promise.all() but if one of the promises fails, instead of the whole promise failing and being caught by the catch block, Promise.allSettled will ignore the failing promise and will return the result of the rest of the succesful promises. Again, a pretty cool FYI.
 
-## JOB QUEUE
+
+
+### JOB QUEUE
 
 As of ES6 ECMASCRIPT decided to separate promises from the callback queue and to add them to a JOB QUEUE (microtask queue) which has a **HIGHER PRIORITY THAN THE CALLBACK QUEUE** which means that promises will run before anything added into the callback queue. Here's an example:
 
@@ -1452,7 +1461,7 @@ console.log(4, 'bonjour')
 
 ```
 
-## ERRORS
+### ERRORS
 
 In Javascript, an Error (capital E) is an object (its a function... which is an object). An Error by itself doesn't do much, it is the **throw** keyword which causes the current javascript thread to stop executing to handle the error. You can actually throw anything in javascript (lol its true, throw anything in the console and see for yourself... i.e. throw 1).
 
@@ -1581,7 +1590,7 @@ var fightModule = (function() {
 In this version, because all vars and fight function are within a function, the global scope does not have access to them and does not need to keep track of them!!! (brilliant). Additionally, we can still expose whatever we'd like to expose selectively so that we can still use it whenever we'd like (look at the return function) by calling the only thing from the file that is exposed to the global scope, the fightModule! (fightModule.fight('ron', 'hagrid')). Furthermore, if we were to create a Harry or voldemort variable somewhere else, the "harry" and "voldemort" within fightModule would not be affected!
 
 This was still NOT FLAWLESS. FightModule is still in the global scope, so if it were to be declared by somebody else somewhere else again, it would be overwritten.
-Secondly, if it has dependencies that it needs, then it is SUPER important that the order of the script tags in the html file was correct, because the order in which they are added to the html file MATTERS! (i.e. if there was another module that fightModule needed (say weaponModule) and the script for weaponModule came AFTER the fightModule one, then it would break cause fightModule would not have access to weaponModule elements.)
+Secondly, if it has dependencies that it needs, then it is SUPER important that the order of the script tags in the html file was correct, because the order in whiAch they are added to the html file MATTERS! (i.e. if there was another module that fightModule needed (say weaponModule) and the script for weaponModule came AFTER the fightModule one, then it would break cause fightModule would not have access to weaponModule elements.)
 
 ### COMMONJS and AMD (Asynchronous Module Definition)
 
@@ -1645,3 +1654,6 @@ Surprisingly it is.... because it holds a property object that holds the methods
 
 **Why can't I just get my promise to return so it can give a value to a variable that I am using??**
 **tldr- a variable's value can't rely on asynchronous code... the variable MUST have a default value that THEN gets updated by the asynchronous code**. The key reason why you made them is because you didn't know about javascript run-time environment's "infrastructure": a call stack, an event loop that checks for the call stack to be empty, and a callback queue that will only be run (in order) as the call stack becomes empty EDIT: a JOB QUEUE separate from the CALLBACK QUEUE that has higher priority (as of ES6). Javascript, being single-threaded, will run through all of your code, place asynchronous code in a callback queue, and continue running through your code. It is ONLY after its done running your code (when it has finished going through its call stack) that the event loop will realize its empty and will fetch the next code that was placed on the callback queue. So before asynchronous code gets run, your call stack must be allowed to run successfully. Making a variable's value rely on asynchronous code will not work as the value will never be set.
+
+**Can I handle different Promise results (Failed results) in different blocks (ie one failure within then with a Promise.reject and another in catch)?**
+NEED REVISION -> The idea is good, but that is not necessarily the way it should be implemented. If a then has a catch block after it, whatever is thrown by the then's Promise.reject *will be caught in the catch block*, and therefore the Promise expects you to handle it. If you don't handle it there (because your catch block is expecting an error for example and the promise.reject contains an object and not an error), then the error is NOT actually handled. You want to make sure you have the option of returning the Promise.reject object if you also have a catch block, then make sure that within the catch block you *also* return Promise.reject!
